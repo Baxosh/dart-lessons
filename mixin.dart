@@ -1,22 +1,20 @@
 void main() {
-  print(Duck());
+  print(Duck().say());
+  print(Airplane().repair());
 }
 
-abstract class Flyable {
+mixin Flyable {
   String fly() => 'I\'m flying';
 }
 
-abstract class Animal {
+mixin Animal {
   String say() => 'I can say something';
 }
 
-abstract class Mechanism {
+mixin Mechanism {
   String repair() => 'Can you repair me ?';
 }
 
-class Duck implements Flyable {
-  @override
-  String fly() => 'Duck duck duck can we fly somewhere duck';
-}
+class Duck with Flyable, Animal {}
 
-class Airplane extends Flyable {}
+class Airplane with Flyable, Mechanism {}
